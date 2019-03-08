@@ -1,0 +1,18 @@
+[{"value": 3, "id": "AF", "country": "Afghanistan"},
+{"value": 1, "id": "KH", "country": "Cambodia"},
+{"value": 37, "id": "CN", "country": "China"},
+{"value": 2, "id": "HK", "country": "Hong Kong"},
+{"value": 27, "id": "IN", "country": "India"},
+{"value": 11, "id": "JP", "country": "Japan"},
+{"value": 2, "id": "LA", "country": "Laos"},
+{"value": 2, "id": "MY", "country": "Malaysia"},
+{"value": 3, "id": "KP", "country": "North Korea"},
+{"value": 5, "id": "PK", "country": "Pakistan"},
+{"value": 12, "id": "PH", "country": "Philippines"},
+{"value": 1, "id": "SG", "country": "Singapore"},
+{"value": 25, "id": "KR", "country": "South Korea"},
+{"value": 1, "id": "LK", "country": "Sri Lanka"},
+{"value": 2, "id": "TW", "country": "Taiwan"},
+{"value": 2, "id": "TH", "country": "Thailand"},
+{"value": 8, "id": "VN", "country": "Vietnam"}
+]

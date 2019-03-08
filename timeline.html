@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Asian-American Literature over time</title>
+<script src="https://d3js.org/d3.v3.js"></script>
+<script src="//www.amcharts.com/lib/4/core.js"></script>
+<script src="//www.amcharts.com/lib/4/charts.js"></script>
+<script src="//www.amcharts.com/lib/4/maps.js"></script>
+<script src="//www.amcharts.com/lib/4/geodata/worldLow.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+<!-- <script src="https://www.amcharts.com/lib/4/themes/material.js"></script>
+ -->
+<!-- <script src="scripts/responsive.min.js"></script>
+ -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Additional stylesheet link goes here -->
+<link rel="stylesheet" type="text/css" href="css/boot.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div class=container>
+<!-- 	<div class="row">
+		<div class="col"> -->
+		<h1> Number of Publications per Year</h1>
+    <p> We've broken down the volume of publications over the years, according to different traits of the authors. Compare the number of output from women and men. Look at the number of works by first-generation immigrants compared to works by Asian Americans born in the U.S.
+    </p>
+
+<!-- 		</div>
+	</div> -->
+	<div class="row">
+		<div class="col mt-3">
+
+ 			<div id="genderChart" style="width:100%; height:500px;"></div> <!-- position:fixed; left:0;top:0; overflow:hidden; -->
+<!-- 	   	<input type="button" value="Remove Series" onclick="removeSeries();" />
+ -->    </div>
+
+	</div>
+    <div class="row">
+    <div class="col">
+      <div id="immigrationChart" style="width:100%; height:500px;"></div> <!-- position:fixed; left:0;top:0; overflow:hidden; -->
+<!--     <input type="button" value="Remove Series" onclick="removeSeries();" />
+ -->    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+function removeSeries() {
+  if (chart.series.length > 1) {
+    chart.series.removeIndex(0).dispose();
+  }
+}
+
+
+am4core.useTheme(am4themes_animated);
+// am4core.useTheme(am4themes_material);
+
+// Themes end
+
+var colors =[
+am4core.color("#6d3580"), 
+am4core.color("#cc4165"), 
+am4core.color("#e4734f"), 
+am4core.color("#ffe26f")
+]
+
+
+var timeline_data =[{"publications": 2, "M": 1, "F": 1, "born": 0, "young adult": 0, "child": 2, "adult": 0, "first-gen": 2, "year": "1899"},
+{"publications": 2, "M": 0, "F": 2, "born": 0, "young adult": 0, "child": 2, "adult": 0, "first-gen": 2, "year": "1901"},
+{"publications": 1, "M": 0, "F": 1, "born": 0, "young adult": 0, "child": 1, "adult": 0, "first-gen": 1, "year": "1902"},
+{"publications": 1, "M": 0, "F": 1, "born": 0, "young adult": 0, "child": 1, "adult": 0, "first-gen": 1, "year": "1903"},
+{"publications": 1, "M": 0, "F": 1, "born": 0, "young adult": 0, "child": 1, "adult": 0, "first-gen": 1, "year": "1904"},
+{"publications": 1, "M": 0, "F": 1, "born": 0, "young adult": 0, "child": 1, "adult": 0, "first-gen": 1, "year": "1906"},
+{"publications": 1, "M": 0, "F": 1, "born": 0, "young adult": 0, "child": 1, "adult": 0, "first-gen": 1, "year": "1910"},
+{"publications": 2, "M": 0, "F": 2, "born": 0, "young adult": 0, "child": 1, "adult": 0, "first-gen": 2, "year": "1912"},
+{"publications": 1, "M": 1, "F": 0, "born": 0, "young adult": 0, "child": 1, "adult": 0, "first-gen": 1, "year": "1920"},
+{"publications": 1, "M": 1, "F": 0, "born": 0, "young adult": 1, "child": 0, "adult": 0, "first-gen": 1, "year": "1921"},
+{"publications": 1, "M": 0, "F": 1, "born": 0, "young adult": 0, "child": 1, "adult": 0, "first-gen": 1, "year": "1922"},
+{"publications": 1, "M": 0, "F": 1, "born": 0, "young adult": 0, "child": 1, "adult": 0, "first-gen": 1, "year": "1923"},
+{"publications": 1, "M": 0, "F": 1, "born": 0, "young adult": 0, "child": 1, "adult": 0, "first-gen": 1, "year": "1925"},
+{"publications": 1, "M": 1, "F": 0, "born": 0, "young adult": 1, "child": 0, "adult": 0, "first-gen": 1, "year": "1931"},
+{"publications": 1, "M": 1, "F": 0, "born": 0, "young adult": 1, "child": 0, "adult": 0, "first-gen": 1, "year": "1933"},
+{"publications": 1, "M": 1, "F": 0, "born": 0, "young adult": 1, "child": 0, "adult": 0, "first-gen": 1, "year": "1937"},
+{"publications": 1, "M": 1, "F": 0, "born": 0, "young adult": 0, "child": 0, "adult": 1, "first-gen": 1, "year": "1939"},
+{"publications": 2, "M": 1, "F": 1, "born": 0, "young adult": 1, "child": 0, "adult": 1, "first-gen": 2, "year": "1940"},
+{"publications": 1, "M": 1, "F": 0, "born": 0, "young adult": 0, "child": 0, "adult": 1, "first-gen": 1, "year": "1941"},
+{"publications": 2, "M": 1, "F": 1, "born": 0, "young adult": 0, "child": 0, "adult": 2, "first-gen": 2, "year": "1942"},
+{"publications": 1, "M": 1, "F": 0, "born": 0, "young adult": 1, "child": 0, "adult": 0, "first-gen": 1, "year": "1944"},
+{"publications": 1, "M": 1, "F": 0, "born": 0, "young adult": 1, "child": 0, "adult": 0, "first-gen": 1, "year": "1946"},
+{"publications": 2, "M": 2, "F": 0, "born": 0, "young adult": 0, "child": 0, "adult": 2, "first-gen": 2, "year": "1947"},
+{"publications": 1, "M": 1, "F": 0, "born": 0, "young adult": 0, "child": 0, "adult": 1, "first-gen": 1, "year": "1948"},
+{"publications": 1, "M": 0, "F": 1, "born": 1, "young adult": 0, "child": 0, "adult": 0, "first-gen": 0, "year": "1949"},
+{"publications": 1, "M": 0, "F": 1, "born": 0, "young adult": 0, "child": 0, "adult": 1, "first-gen": 1, "year": "1952"},
+{"publications": 2, "M": 2, "F": 0, "born": 0, "young adult": 0, "child": 1, "adult": 1, "first-gen": 2, "year": "1954"},
+{"publications": 3, "M": 1, "F": 2, "born": 1, "young adult": 0, "child": 0, "adult": 2, "first-gen": 2, "year": "1956"},
+{"publications": 1, "M": 0, "F": 1, "born": 0, "young adult": 0, "child": 0, "adult": 1, "first-gen": 1, "year": "1958"},
+{"publications": 2, "M": 1, "F": 1, "born": 1, "young adult": 1, "child": 0, "adult": 0, "first-gen": 1, "year": "1959"},
+{"publications": 1, "M": 1, "F": 0, "born": 0, "young adult": 1, "child": 0, "adult": 0, "first-gen": 1, "year": "1960"},
+{"publications": 3, "M": 2, "F": 1, "born": 1, "young adult": 0, "child": 2, "adult": 0, "first-gen": 2, "year": "1961"},
+{"publications": 2, "M": 1, "F": 1, "born": 0, "young adult": 1, "child": 0, "adult": 1, "first-gen": 2, "year": "1962"},
+{"publications": 2, "M": 2, "F": 0, "born": 0, "young adult": 1, "child": 0, "adult": 1, "first-gen": 2, "year": "1963"},
+{"publications": 5, "M": 4, "F": 1, "born": 1, "young adult": 2, "child": 0, "adult": 2, "first-gen": 4, "year": "1964"},
+{"publications": 2, "M": 1, "F": 1, "born": 0, "young adult": 0, "child": 0, "adult": 2, "first-gen": 2, "year": "1965"},
+{"publications": 2, "M": 1, "F": 1, "born": 0, "young adult": 0, "child": 0, "adult": 2, "first-gen": 2, "year": "1966"},
+{"publications": 1, "M": 0, "F": 1, "born": 0, "young adult": 0, "child": 0, "adult": 1, "first-gen": 1, "year": "1967"},
+{"publications": 3, "M": 1, "F": 2, "born": 0, "young adult": 1, "child": 1, "adult": 1, "first-gen": 3, "year": "1968"},
+{"publications": 2, "M": 2, "F": 0, "born": 1, "young adult": 0, "child": 0, "adult": 1, "first-gen": 1, "year": "1969"},
+{"publications": 3, "M": 2, "F": 1, "born": 0, "young adult": 3, "child": 0, "adult": 0, "first-gen": 3, "year": "1970"},
+{"publications": 1, "M": 0, "F": 1, "born": 1, "young adult": 0, "child": 0, "adult": 0, "first-gen": 0, "year": "1973"},
+{"publications": 1, "M": 0, "F": 1, "born": 1, "young adult": 0, "child": 0, "adult": 0, "first-gen": 0, "year": "1974"},
+{"publications": 3, "M": 1, "F": 2, "born": 0, "young adult": 1, "child": 1, "adult": 1, "first-gen": 3, "year": "1975"},
+{"publications": 1, "M": 0, "F": 1, "born": 1, "young adult": 0, "child": 0, "adult": 0, "first-gen": 0, "year": "1976"},
+{"publications": 1, "M": 1, "F": 0, "born": 0, "young adult": 0, "child": 0, "adult": 1, "first-gen": 1, "year": "1977"},
+{"publications": 3, "M": 1, "F": 2, "born": 3, "young adult": 0, "child": 0, "adult": 0, "first-gen": 0, "year": "1978"},
+{"publications": 1, "M": 0, "F": 1, "born": 0, "young adult": 0, "child": 0, "adult": 1, "first-gen": 1, "year": "1980"},
+{"publications": 3, "M": 2, "F": 1, "born": 0, "young adult": 0, "child": 1, "adult": 2, "first-gen": 3, "year": "1981"},
+{"publications": 5, "M": 3, "F": 2, "born": 0, "young adult": 2, "child": 1, "adult": 2, "first-gen": 5, "year": "1982"},
+{"publications": 8, "M": 4, "F": 4, "born": 2, "young adult": 2, "child": 0, "adult": 4, "first-gen": 6, "year": "1986"},
+{"publications": 1, "M": 0, "F": 1, "born": 0, "young adult": 1, "child": 0, "adult": 0, "first-gen": 1, "year": "1987"},
+{"publications": 4, "M": 4, "F": 0, "born": 1, "young adult": 0, "child": 0, "adult": 3, "first-gen": 3, "year": "1988"},
+{"publications": 3, "M": 1, "F": 2, "born": 2, "young adult": 0, "child": 0, "adult": 0, "first-gen": 1, "year": "1989"},
+{"publications": 4, "M": 2, "F": 2, "born": 0, "young adult": 0, "child": 2, "adult": 0, "first-gen": 4, "year": "1990"},
+{"publications": 9, "M": 2, "F": 7, "born": 4, "young adult": 3, "child": 0, "adult": 1, "first-gen": 5, "year": "1991"},
+{"publications": 4, "M": 2, "F": 2, "born": 1, "young adult": 1, "child": 0, "adult": 2, "first-gen": 3, "year": "1992"},
+{"publications": 7, "M": 2, "F": 5, "born": 1, "young adult": 2, "child": 0, "adult": 3, "first-gen": 6, "year": "1993"},
+{"publications": 7, "M": 5, "F": 2, "born": 3, "young adult": 2, "child": 0, "adult": 0, "first-gen": 4, "year": "1994"},
+{"publications": 12, "M": 4, "F": 8, "born": 4, "young adult": 6, "child": 0, "adult": 1, "first-gen": 8, "year": "1995"},
+{"publications": 11, "M": 3, "F": 8, "born": 5, "young adult": 1, "child": 4, "adult": 1, "first-gen": 6, "year": "1996"},
+{"publications": 16, "M": 5, "F": 11, "born": 6, "young adult": 4, "child": 2, "adult": 3, "first-gen": 10, "year": "1997"},
+{"publications": 17, "M": 9, "F": 8, "born": 5, "young adult": 2, "child": 3, "adult": 6, "first-gen": 12, "year": "1998"},
+{"publications": 9, "M": 3, "F": 6, "born": 2, "young adult": 2, "child": 0, "adult": 4, "first-gen": 7, "year": "1999"},
+{"publications": 14, "M": 10, "F": 4, "born": 3, "young adult": 3, "child": 3, "adult": 2, "first-gen": 11, "year": "2000"},
+{"publications": 10, "M": 5, "F": 5, "born": 3, "young adult": 3, "child": 1, "adult": 2, "first-gen": 7, "year": "2001"},
+{"publications": 15, "M": 9, "F": 6, "born": 4, "young adult": 4, "child": 2, "adult": 2, "first-gen": 11, "year": "2002"},
+{"publications": 10, "M": 2, "F": 8, "born": 2, "young adult": 4, "child": 2, "adult": 2, "first-gen": 8, "year": "2003"},
+{"publications": 22, "M": 7, "F": 15, "born": 10, "young adult": 2, "child": 3, "adult": 6, "first-gen": 12, "year": "2004"},
+{"publications": 21, "M": 6, "F": 15, "born": 6, "young adult": 5, "child": 6, "adult": 4, "first-gen": 15, "year": "2005"},
+{"publications": 17, "M": 2, "F": 15, "born": 6, "young adult": 2, "child": 5, "adult": 1, "first-gen": 11, "year": "2006"},
+{"publications": 20, "M": 8, "F": 12, "born": 8, "young adult": 3, "child": 1, "adult": 7, "first-gen": 12, "year": "2007"},
+{"publications": 21, "M": 5, "F": 16, "born": 12, "young adult": 2, "child": 2, "adult": 5, "first-gen": 9, "year": "2008"},
+{"publications": 22, "M": 5, "F": 17, "born": 8, "young adult": 6, "child": 5, "adult": 2, "first-gen": 14, "year": "2009"},
+{"publications": 21, "M": 5, "F": 16, "born": 14, "young adult": 1, "child": 2, "adult": 1, "first-gen": 7, "year": "2010"},
+{"publications": 14, "M": 3, "F": 11, "born": 5, "young adult": 0, "child": 5, "adult": 3, "first-gen": 9, "year": "2011"},
+];
+var chart = am4core.create("genderChart", am4charts.XYChart);
+// chart.responsive.enabled = true;
+
+var title = chart.titles.create();
+title.text = "Publications by Male and Female Authors";
+title.fontSize = 25;
+title.marginBottom = 30;
+
+
+chart.colors.list = colors;
+chart.data = timeline_data;
+chart.dateFormatter.inputDateFormat = "yyyy";
+var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+dateAxis.renderer.minGridDistance = 60;
+dateAxis.startLocation = 0.5;
+dateAxis.endLocation = 0.5;
+dateAxis.baseInterval = {
+  timeUnit: "year",
+  count: 1
+}
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.tooltip.disabled = true;
+
+var series = chart.series.push(new am4charts.LineSeries());
+series.dataFields.dateX = "year";
+series.name = "Publications by men";
+series.dataFields.valueY = "M";
+series.tooltipHTML = "<span style='font-size:14px; color:#000000;'><i class='fas fa-male' style='vertical-align:bottom; margin-right: 10px; width:15px; height:21px;'></i><b>{valueY.value}</b></span>";
+series.tooltipText = "[#000]{valueY.value}[/]";
+series.tooltip.background.fill = am4core.color("#FFF");
+series.tooltip.getStrokeFromObject = true;
+series.tooltip.background.strokeWidth = 3;
+series.tooltip.getFillFromObject = false;
+series.fillOpacity = 0.8;
+series.strokeWidth = 2;
+series.stacked = true;
+
+var series2 = chart.series.push(new am4charts.LineSeries());
+series2.name = "Publications by women";
+series2.dataFields.dateX = "year";
+series2.dataFields.valueY = "F";
+series2.tooltipHTML = "<span style='font-size:14px; color:#000000;'><i class='fas fa-female' style='vertical-align:bottom; margin-right: 10px; width:15px; height:21px;'></i><b>{valueY.value}</b></span>";
+series2.tooltipText = "[#000]{valueY.value}[/]";
+series2.tooltip.background.fill = am4core.color("#FFF");
+series2.tooltip.getFillFromObject = false;
+series2.tooltip.getStrokeFromObject = true;
+series2.tooltip.background.strokeWidth = 3;
+series2.sequencedInterpolation = true;
+series2.fillOpacity = 0.8;
+series2.stacked = true;
+series2.strokeWidth = 2;
+
+
+chart.cursor = new am4charts.XYCursor();
+chart.cursor.xAxis = dateAxis;
+// chart.scrollbarX = new am4core.Scrollbar();
+
+// Add a legend
+chart.legend = new am4charts.Legend();
+chart.legend.fontSize = 20;
+
+// chart.legend.position = "top";
+
+
+
+
+
+var chart2 = am4core.create("immigrationChart", am4charts.XYChart);
+// chart2.responsive.enabled = true;
+
+var title2 = chart2.titles.create();
+title2.text = "Publications by Immigrants and Natural-born Citizens";
+// title2.fontSize = 25;
+title2.marginBottom = 30;
+
+chart2.colors.list = 
+[am4core.color("#793b8e"), 
+am4core.color("#ab6ac1"), 
+am4core.color("#caa1d8"), 
+am4core.color("#ffe26f")
+]
+
+
+chart2.data = timeline_data;
+chart2.dateFormatter.inputDateFormat = "yyyy";
+var dateAxis = chart2.xAxes.push(new am4charts.DateAxis());
+dateAxis.renderer.minGridDistance = 60;
+dateAxis.startLocation = 0.5;
+dateAxis.endLocation = 0.5;
+dateAxis.baseInterval = {
+  timeUnit: "year",
+  count: 1
+}
+
+var valueAxis = chart2.yAxes.push(new am4charts.ValueAxis());
+valueAxis.tooltip.disabled = true;
+
+var series = chart2.series.push(new am4charts.LineSeries());
+series.dataFields.dateX = "year";
+// series.fill = am4core.color("#793b8e");
+series.name = "Immigrated as child (C)";
+series.dataFields.valueY = "child";
+series.tooltipHTML =  "<span style='font-size:12px; color:#000000;'><b>C: {valueY.value}</b></span>";
+series.tooltipText = "[#000]{valueY.value}[/]";
+series.tooltip.background.fill = am4core.color("#FFF");
+series.tooltip.getStrokeFromObject = true;
+series.tooltip.background.strokeWidth = 3;
+series.tooltip.getFillFromObject = false;
+series.fillOpacity = 1;
+series.strokeWidth = 2;
+series.stacked = true;
+
+var series2 = chart2.series.push(new am4charts.LineSeries());
+series2.name = "Immigrated as young adult (YA)";
+// series2.fill = am4core.color("#ab6ac1");
+series2.dataFields.dateX = "year";
+series2.dataFields.valueY = "young adult";
+series2.tooltipHTML = "<span style='font-size:12px; color:#000000;'><b>YA: {valueY.value}</b></span>";
+series2.tooltipText = "[#000]{valueY.value}[/]";
+series2.tooltip.background.fill = am4core.color("#FFF");
+series2.tooltip.getFillFromObject = false;
+series2.tooltip.getStrokeFromObject = true;
+series2.tooltip.background.strokeWidth = 3;
+series2.sequencedInterpolation = true;
+series2.fillOpacity = 1;
+series2.stacked = true;
+series2.strokeWidth = 2;
+
+var series3 = chart2.series.push(new am4charts.LineSeries());
+series3.name = "Immigrated as adult (A)";
+// series3.fill = am4core.color("#caa1d8");
+series3.dataFields.dateX = "year";
+series3.dataFields.valueY = "adult";
+series3.tooltipHTML = "<span style='font-size:12px; color:#000000;'><b>A: {valueY.value}</b></span>";
+series3.tooltipText = "[#000]{valueY.value}[/]";
+series3.tooltip.background.fill = am4core.color("#FFF");
+series3.tooltip.getFillFromObject = false;
+series3.tooltip.getStrokeFromObject = true;
+series3.tooltip.background.strokeWidth = 3;
+series3.sequencedInterpolation = true;
+series3.fillOpacity = 1;
+series3.stacked = true;
+series3.strokeWidth = 2;
+
+
+var series4 = chart2.series.push(new am4charts.LineSeries());
+series4.name = "Born in America";
+series4.dataFields.dateX = "year";
+series4.dataFields.valueY = "born";
+series4.tooltipHTML = "<span style='font-size:12px; color:#000000;'><b>B: {valueY.value}</b></span>";
+series4.tooltipText = "[#000]{valueY.value}[/]";
+series4.tooltip.background.fill = am4core.color("#FFF");
+series4.tooltip.getFillFromObject = false;
+series4.tooltip.getStrokeFromObject = true;
+series4.tooltip.background.strokeWidth = 3;
+series4.sequencedInterpolation = true;
+series4.fillOpacity = .8;
+series4.stacked = false;
+series4.strokeWidth = 2;
+
+
+chart2.cursor = new am4charts.XYCursor();
+chart2.cursor.xAxis = dateAxis;
+// chart.scrollbarX = new am4core.Scrollbar();
+
+// Add a legend
+chart2.legend = new am4charts.Legend();
+chart2.legend.fontSize = 20;
+
+
+function init() {
+ loadJSON(function(response) {
+  // Parse JSON string into object
+    var actual_JSON = JSON.parse(response);
+    console.log(actual_JSON);
+ });
+}
+
+ function loadJSON(callback) {   
+
+    var xobj = new XMLHttpRequest();
+        xobj.overrideMimeType("application/json");
+    xobj.open('GET', 'sample_data.json', true); // Replace 'my_data' with the path to your file
+    xobj.onreadystatechange = function () {
+          if (xobj.readyState == 4 && xobj.status == "200") {
+            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+            callback(xobj.responseText);
+          }
+    };
+    xobj.send(null);  
+ }
+
+</script>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/popper.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+</body>
+</html>
