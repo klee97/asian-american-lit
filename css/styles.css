@@ -1,0 +1,29 @@
+#main {
+  color: #800000;
+}
+#main a {
+  /*nested*/
+  text-decoration: underline wavy;
+}
+
+h1 {
+  color: #7aaf85;
+}
+
+p {
+  color: black;
+}
+
+.secondary {
+  color: #7aaf85;
+}
+
+img {
+  width: 500px;
+}
+
+.imageDiv {
+  padding-top: 20px;
+}
+
+/*# sourceMappingURL=styles.css.map */

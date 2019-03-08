@@ -1,0 +1,68 @@
+
+#main {
+  background-color: blanchedalmond;
+}
+
+.row {
+  font-size: xx-large;
+}
+p {
+  font-size: large;
+}
+
+body {
+/*	padding-bottom: 70px;
+*/    padding-top: 50px; 
+
+}
+
+footer{
+    height:70px; 
+    background-color: chartreuse;
+
+}
+.list-inline{display:block;}
+.list-inline li{display:inline-block;}
+.list-inline li:after{margin:0 10px;}
+
+ul li {
+font-size: .8em;
+}
+/*img {
+  width: 800px;
+} */
+
+ul {
+list-style-type: none;
+}
+.card-img-top {
+  width: 300px;
+}
+
+
+
+/* Here I change the default behavior
+of these built in Bootstrap typography
+classes to make them resize responsively. */
+.display-3 {
+  font-size: 7vmin;
+}
+
+.lead {
+  font-size: 3vmin;
+}
+
+.no-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+.masthead {
+  height: 100vh;
+  min-height: 500px;
+  background-image: url("../images/uchicago.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
