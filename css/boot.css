@@ -72,7 +72,9 @@ list-style-type: none;
 }
 
 
-
+pre{
+  font-size: 11px;
+}
 /* Here I change the default behavior
 of these built in Bootstrap typography
 classes to make them resize responsively. */
