@@ -61,13 +61,15 @@
     });
 </script> -->
 <script src="scripts/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.csvToTable.js"></script>
+<script type="text/javascript" src="js/jquery.tablesorter.dev.js"></script>
 <script src="js/jquery.csvToTable.js"></script>
   <script>
   $(function() {
     $.get('https://raw.githubusercontent.com/klee97/asian-american-lit/master/bibliography.tsv"', function(data) {
       $('#TSVSource').html('<pre>' + data + '</pre>');
     });
-    $('#TSVTable').CSVToTable('https://raw.githubusercontent.com/klee97/asian-american-lit/master/bibliography.tsv"', { loadingText: 'Loading TSV Data...', startLine: 0, separator: "\t" });
+    $('#TSVTable').CSVToTable('https://raw.githubusercontent.com/klee97/asian-american-lit/master/bibliography.tsv"', { loadingText: 'Loading TSV Data...', loadingImage: 'images/loading.gif',startLine: 0, separator: "\t" });
     ;
   });
   </script>
