@@ -96,7 +96,9 @@ classes to make them resize responsively. */
 .masthead {
   height: 100vh;
   min-height: 500px;
-  background-image: url("../images/blur-book-stack-books-590493.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/blur-book-stack-books-590493.jpg');
+  /*background-image: url("../images/blur-book-stack-books-590493.jpg");
+  */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
