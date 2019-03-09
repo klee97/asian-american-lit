@@ -72,7 +72,9 @@ list-style-type: none;
 }
 
 
-
+tr.odd {
+  background: #F9F9F9;
+}
 /* Here I change the default behavior
 of these built in Bootstrap typography
 classes to make them resize responsively. */
