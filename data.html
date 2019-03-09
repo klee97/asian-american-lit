@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Asian-American Literature over space</title>
+<script src="//www.amcharts.com/lib/4/core.js"></script>
+<script src="//www.amcharts.com/lib/4/charts.js"></script>
+<script src="//www.amcharts.com/lib/4/maps.js"></script>
+<script src="//www.amcharts.com/lib/4/geodata/worldLow.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+
+<!-- <script src="scripts/responsive.min.js"></script>
+ -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Additional stylesheet link goes here -->
+<link rel="stylesheet" type="text/css" href="css/boot.css">
+</head>
+
+<body id="page-top">
+
+
+  <!-- About Section -->
+<!--   <section class="page-section bg-white" id="about">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="text-white mt-0">We've got what you need!</h2>
+          <hr class="divider light my-4">
+          <p class="text-white-50 mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!</p>
+          <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+        </div>
+      </div>
+    </div>
+  </section>
+ -->
+<div id="TSVTable"> </div>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.js"></script>
+<script>
+    function arrayToTable(tableData) {
+        var table = $('<table></table>');
+        $(tableData).each(function (i, rowData) {
+            var row = $('<tr></tr>');
+            $(rowData).each(function (j, cellData) {
+                row.append($('<td>'+cellData+'</td>'));
+            });
+            table.append(row);
+        });
+        return table;
+    }
+
+    $.ajax({
+        type: "GET",
+        url: "https://raw.githubusercontent.com/klee97/asian-american-lit/master/bibliography.tsv",
+        success: function (data) {
+            $('body').append(arrayToTable(Papa.parse(data).data));
+        }
+    });
+</script> -->
+<script src="scripts/jquery.min.js"></script>
+<script src="js/jquery.csvToTable.js"></script>
+  <script>
+  $(function() {
+    $.get('https://raw.githubusercontent.com/klee97/asian-american-lit/master/bibliography.tsv"', function(data) {
+      $('#TSVSource').html('<pre>' + data + '</pre>');
+    });
+    $('#TSVTable').CSVToTable('https://raw.githubusercontent.com/klee97/asian-american-lit/master/bibliography.tsv"', { loadingText: 'Loading TSV Data...', startLine: 0, separator: "\t" });
+    ;
+  });
+  </script>
+<script src="scripts/popper.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+</body>
+</html>
