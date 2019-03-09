@@ -31,10 +31,14 @@ country_dict = {"Afghanistan": "AF", "Armenia": "AM", "Azerbaijan": "AZ",
  "Thailand": "TH", "Turkey": "TR", "Turkmenistan": "TM", 
  "United Arab Emirates": "AE", "Uzbekistan": "UZ", "Vietnam": "VN",
  "Yemen":"YE"} 
+COUNTRY = 3
+LASTNAME = 0
+FIRSTNAME = 1
+GENDER = 6
+AGE_CATEGORY = 5
+YEAR = 9
 def make_years():
-    GENDER = 6
-    AGE_CATEGORY = 5
-    YEAR = 9
+
     year_dict = dict()
     print("opening json")
     jsonfile = open('timeline.json', 'w')
@@ -74,9 +78,7 @@ def make_years():
 
 
 def get_countries():
-    COUNTRY = 3
-    LASTNAME = 0
-    FIRSTNAME = 1
+
     countries = dict()
     jsonfile = open('countries.json', 'w')
     authors = set()
@@ -85,6 +87,7 @@ def get_countries():
         next(reader, None)
         for line in reader:
             name = line[FIRSTNAME].rstrip() + " " + line[LASTNAME].rstrip()
+            gender = line[GENDER].rstrip()
             if name in authors:
                 continue
             country_list = [x.strip() for x in line[COUNTRY].split(',')]
@@ -93,8 +96,10 @@ def get_countries():
                     country = "South Korea"
 
                 if country not in countries:
-                    countries[country] = {"value": 0, "id":country_dict[country]}
+                    countries[country] = {"value": 0, "id":country_dict[country], "M": 0, "F": 0}
                 countries[country]["value"] +=1
+                countries[country][gender] += 1
+
                 authors.add(name)
 
     jsonfile.write("[")

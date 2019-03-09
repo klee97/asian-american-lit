@@ -16,11 +16,33 @@
 <link rel="stylesheet" type="text/css" href="css/boot.css">
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Home</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#data">Data</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
 
 <div class=container>
 	<div class="row">
-		<div class="col">
-		<h1> Header</h1>
+		<div class="col mt-5">
+		<h1>History Through Space</h1>
 		</div>
 	</div>
 	<div class="row">
@@ -30,7 +52,7 @@
 	</div>
 	<div class="row">
 		<div class="col">
-      <h3>Bar char of number of publications per year</h3>
+      <h3>Bar chart of number of publications per year</h3>
  			<div id="barDiv" style="width:100%; height:500px;"></div>
 		</div>
 	</div>
@@ -43,7 +65,7 @@
 
 <script>
 function getval( callback ){
-    jQuery.getJSON('https://api.myjson.com/bins/lho7i', function(data) {
+    jQuery.getJSON('https://raw.githubusercontent.com/klee97/asian-american-lit/master/countries.json', function(data) {
         callback(data);
     });
 }
@@ -94,9 +116,6 @@ $(function () {
               heatLegend.valueAxis.hideTooltip();
             });
 
-            map.responsive.useDefault = false
-            map.responsive.enabled = true;
-
             // alert( 'Do something with ' + value + ' here!' );
             am4core.useTheme(am4themes_animated);
             // Themes end
@@ -140,17 +159,48 @@ $(function () {
 
             axisBreak.defaultState.transitionDuration = 1000;
 
-            var series = chart.series.push(new am4charts.ColumnSeries());
+
+
+            function createSeries(field, name) {
+  
+            // Set up series
+            let series = chart.series.push(new am4charts.ColumnSeries());
+            series.dataFields.valueY = field;
             series.dataFields.categoryX = "country";
-            series.dataFields.valueY = "value";
-            series.columns.template.tooltipText = "{country}:{valueY.value}";
-            series.columns.template.tooltipY = 0;
-            series.columns.template.strokeOpacity = 0;
+            series.sequencedInterpolation = true;
+            // Make it stacked
+            series.stacked = true;
+            
+            // Configure columns
+            series.columns.template.width = am4core.percent(60);
+            console.log(name)
+            series.name = name;
+
+            // Add label
+
+            return series;
+          }
+
+
+            series = createSeries("M", "Male");
+            series.columns.template.tooltipText = "[bold]{categoryX}[/]\n[font-size:14px]Male : {valueY}";
+
+            createSeries("F", "Female");
+            series.columns.template.tooltipText = "[bold]{categoryX}[/]\n[font-size:14px]Female : {valueY}";
+
+            chart.legend = new am4charts.Legend();
+
+
+
+            // var series = chart.series.push(new am4charts.ColumnSeries());
+            // series.dataFields.categoryX = "country";
+            // series.dataFields.valueY = "value";
+            // series.columns.template.tooltipText = "{country}:{valueY.value}";
+            // series.columns.template.tooltipY = 0;
+            // series.columns.template.strokeOpacity = 0;
 
             // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
-            series.columns.template.adapter.add("fill", function(fill, target) {
-              return chart.colors.getIndex(target.dataItem.index);
-            });
+
 
         } );
     });

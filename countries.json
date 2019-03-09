@@ -1,18 +1,20 @@
-[{"value": 3, "id": "AF", "country": "Afghanistan"},
-{"value": 1, "id": "KH", "country": "Cambodia"},
-{"value": 37, "id": "CN", "country": "China"},
-{"value": 2, "id": "HK", "country": "Hong Kong"},
-{"value": 27, "id": "IN", "country": "India"},
-{"value": 11, "id": "JP", "country": "Japan"},
-{"value": 2, "id": "LA", "country": "Laos"},
-{"value": 2, "id": "MY", "country": "Malaysia"},
-{"value": 3, "id": "KP", "country": "North Korea"},
-{"value": 5, "id": "PK", "country": "Pakistan"},
-{"value": 12, "id": "PH", "country": "Philippines"},
-{"value": 1, "id": "SG", "country": "Singapore"},
-{"value": 25, "id": "KR", "country": "South Korea"},
-{"value": 1, "id": "LK", "country": "Sri Lanka"},
-{"value": 2, "id": "TW", "country": "Taiwan"},
-{"value": 2, "id": "TH", "country": "Thailand"},
-{"value": 8, "id": "VN", "country": "Vietnam"}
+[{"value": 3, "id": "AF", "M": 2, "F": 1, "country": "Afghanistan"}
+,{"value": 1, "id": "BD", "M": 0, "F": 1, "country": "Bangladesh"}
+,{"value": 1, "id": "KH", "M": 0, "F": 1, "country": "Cambodia"}
+,{"value": 44, "id": "CN", "M": 17, "F": 27, "country": "China"}
+,{"value": 2, "id": "HK", "M": 1, "F": 1, "country": "Hong Kong"}
+,{"value": 30, "id": "IN", "M": 9, "F": 21, "country": "India"}
+,{"value": 11, "id": "JP", "M": 6, "F": 5, "country": "Japan"}
+,{"value": 2, "id": "LA", "M": 1, "F": 1, "country": "Laos"}
+,{"value": 2, "id": "MY", "M": 1, "F": 1, "country": "Malaysia"}
+,{"value": 1, "id": "MM", "M": 0, "F": 1, "country": "Myanmar"}
+,{"value": 3, "id": "KP", "M": 1, "F": 2, "country": "North Korea"}
+,{"value": 5, "id": "PK", "M": 3, "F": 2, "country": "Pakistan"}
+,{"value": 12, "id": "PH", "M": 7, "F": 5, "country": "Philippines"}
+,{"value": 1, "id": "SG", "M": 0, "F": 1, "country": "Singapore"}
+,{"value": 27, "id": "KR", "M": 10, "F": 17, "country": "South Korea"}
+,{"value": 1, "id": "LK", "M": 0, "F": 1, "country": "Sri Lanka"}
+,{"value": 2, "id": "TW", "M": 1, "F": 1, "country": "Taiwan"}
+,{"value": 4, "id": "TH", "M": 1, "F": 3, "country": "Thailand"}
+,{"value": 8, "id": "VN", "M": 4, "F": 4, "country": "Vietnam"}
 ]
