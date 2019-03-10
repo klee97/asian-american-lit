@@ -71,7 +71,10 @@ list-style-type: none;
   width: 300px;
 }
 
-
+.container{
+  margin-right: 50px;
+  margin-left: 50px;
+}
 tr.odd {
   background: #F9F9F9;
 }
