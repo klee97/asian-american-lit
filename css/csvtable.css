@@ -2,7 +2,7 @@
 table.CSVTable {
 	font: 0.8em Verdana,Arial,Geneva,Helvetica,sans-serif;
 	border-collapse: collapse;
-	width: 450px;
+	width: 100%;
 }
 
 /* Header */

@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Asian-American Literature over space</title>
+<title>Raw Data</title>
 <link rel="stylesheet" href="css/csvtable.css" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-
-
-
-<!-- <script src="scripts/responsive.min.js"></script>
- -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <!-- Additional stylesheet link goes here -->
 <link rel="stylesheet" type="text/css" href="css/boot.css">
@@ -18,7 +12,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav" style="background:#9cdada;">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="index.html">Home</a>
+      <a class="navbar-brand js-scroll-trigger" href="index.html">LitVisuals</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -32,9 +26,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="data.html">Data</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="about.html">About</a>
           </li>
         </ul>
       </div>
@@ -76,28 +67,6 @@
      </div>
    </div>
  </footer>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.js"></script>
-<script>
-    function arrayToTable(tableData) {
-        var table = $('<table></table>');
-        $(tableData).each(function (i, rowData) {
-            var row = $('<tr></tr>');
-            $(rowData).each(function (j, cellData) {
-                row.append($('<td>'+cellData+'</td>'));
-            });
-            table.append(row);
-        });
-        return table;
-    }
-
-    $.ajax({
-        type: "GET",
-        url: "https://raw.githubusercontent.com/klee97/asian-american-lit/master/bibliography.tsv",
-        success: function (data) {
-            $('body').append(arrayToTable(Papa.parse(data).data));
-        }
-    });
-</script> -->
 <script src="scripts/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.csvToTable.js"></script>
 <script type="text/javascript" src="js/jquery.tablesorter.dev.js"></script>

@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Asian-American Literature over space</title>
-<script src="https://d3js.org/d3.v3.js"></script>
+<title>Geography - Asian-American Literature over Space</title>
 <script src="//www.amcharts.com/lib/4/core.js"></script>
 <script src="//www.amcharts.com/lib/4/charts.js"></script>
 <script src="//www.amcharts.com/lib/4/maps.js"></script>
 <script src="//www.amcharts.com/lib/4/geodata/worldLow.js"></script>
 <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- <script src="scripts/responsive.min.js"></script>
- -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <!-- Additional stylesheet link goes here -->
 <link rel="stylesheet" type="text/css" href="css/boot.css">
@@ -18,7 +15,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav" style="background:#9cdada;">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="index.html">Home</a>
+      <a class="navbar-brand js-scroll-trigger" href="index.html">Lit Visuals</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -32,9 +29,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="data.html">Data</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="about.html">About</a>
           </li>
         </ul>
       </div>
@@ -168,13 +162,13 @@ $(function () {
 
             var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
             valueAxis.min = 0;
-            valueAxis.max = 40;
+            valueAxis.max = 60;
             valueAxis.strictMinMax = true;
             // valueAxis.renderer.minGridDistance = 20;
             // axis break
             var axisBreak = valueAxis.axisBreaks.create();
             axisBreak.startValue = 27;
-            axisBreak.endValue = 35;
+            axisBreak.endValue = 50;
             axisBreak.breakSize = 0.005;
 
             // make break expand on hover
