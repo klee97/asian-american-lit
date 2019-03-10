@@ -1,18 +1,18 @@
 [{"value": 3, "id": "AF", "M": 2, "F": 1, "country": "Afghanistan"}
 ,{"value": 1, "id": "BD", "M": 0, "F": 1, "country": "Bangladesh"}
-,{"value": 1, "id": "KH", "M": 0, "F": 1, "country": "Cambodia"}
-,{"value": 44, "id": "CN", "M": 17, "F": 27, "country": "China"}
+,{"value": 2, "id": "KH", "M": 0, "F": 2, "country": "Cambodia"}
+,{"value": 53, "id": "CN", "M": 20, "F": 33, "country": "China"}
 ,{"value": 2, "id": "HK", "M": 1, "F": 1, "country": "Hong Kong"}
 ,{"value": 30, "id": "IN", "M": 9, "F": 21, "country": "India"}
 ,{"value": 11, "id": "JP", "M": 6, "F": 5, "country": "Japan"}
 ,{"value": 2, "id": "LA", "M": 1, "F": 1, "country": "Laos"}
-,{"value": 2, "id": "MY", "M": 1, "F": 1, "country": "Malaysia"}
+,{"value": 3, "id": "MY", "M": 1, "F": 2, "country": "Malaysia"}
 ,{"value": 1, "id": "MM", "M": 0, "F": 1, "country": "Myanmar"}
-,{"value": 3, "id": "KP", "M": 1, "F": 2, "country": "North Korea"}
+,{"value": 4, "id": "KP", "M": 1, "F": 3, "country": "North Korea"}
 ,{"value": 5, "id": "PK", "M": 3, "F": 2, "country": "Pakistan"}
-,{"value": 12, "id": "PH", "M": 7, "F": 5, "country": "Philippines"}
+,{"value": 13, "id": "PH", "M": 8, "F": 5, "country": "Philippines"}
 ,{"value": 1, "id": "SG", "M": 0, "F": 1, "country": "Singapore"}
-,{"value": 27, "id": "KR", "M": 10, "F": 17, "country": "South Korea"}
+,{"value": 31, "id": "KR", "M": 10, "F": 21, "country": "South Korea"}
 ,{"value": 1, "id": "LK", "M": 0, "F": 1, "country": "Sri Lanka"}
 ,{"value": 2, "id": "TW", "M": 1, "F": 1, "country": "Taiwan"}
 ,{"value": 4, "id": "TH", "M": 1, "F": 3, "country": "Thailand"}

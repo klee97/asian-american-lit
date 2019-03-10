@@ -15,31 +15,60 @@
 <link rel="stylesheet" type="text/css" href="css/boot.css">
 </head>
 
-<body id="page-top">
-
-
-  <!-- About Section -->
-<!--   <section class="page-section bg-white" id="about">
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav" style="background:#9cdada;">
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
-          <h2 class="text-white mt-0">We've got what you need!</h2>
-          <hr class="divider light my-4">
-          <p class="text-white-50 mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!</p>
-          <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
-        </div>
+      <a class="navbar-brand js-scroll-trigger" href="index.html">Home</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="geography.html">Maps</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="timeline.html">Timelines</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="data.html">Data</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="about.html">About</a>
+          </li>
+        </ul>
       </div>
     </div>
-  </section>
- -->
-<div class="container">
-<h1>Raw Data</h1>
-<div class="row" style="font-size: x-small;">
-  <div class="col"> 
+  </nav>
+<div class=container>
+<!--  <div class="row">
+    <div class="col"> -->
+        <div class="jumbotron my-5">
+<!--    <div class="col mt-5">
+ -->    <h1>Raw Data</h1>
+        <p> Raw data for this project comes from the <i> Historical Dictionary of Asian American Literature and Theater</i> by Wenying Xu
+
+        </p>
+        </div>
+
   <div id="TSVTable"> </div>
-  </div>
+
 </div>
-</div>
+
+<footer class="fixed-bottom font-small page-footer d-none d-md-block" style="background:#e0e0e0">
+    <div class="container">
+      <div class="row py-2">
+        <div class="col">
+          <ul class="list-inline">
+           <li>1212 E 59th St, Chicago, IL 60637</li>
+           <li>&bull; 555-555-555</li>
+         </ul>
+       </div>
+     </div>
+     <div>
+     </div>
+   </div>
+ </footer>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.js"></script>
 <script>
     function arrayToTable(tableData) {

@@ -16,22 +16,25 @@
 <link rel="stylesheet" type="text/css" href="css/boot.css">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 style='background:#212529'" id="mainNav">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav" style="background:#9cdada;">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Home</a>
+      <a class="navbar-brand js-scroll-trigger" href="index.html">Home</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            <a class="nav-link js-scroll-trigger" href="geography.html">Maps</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#data">Data</a>
+            <a class="nav-link js-scroll-trigger" href="timeline.html">Timelines</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+            <a class="nav-link js-scroll-trigger" href="data.html">Data</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="about.html">About</a>
           </li>
         </ul>
       </div>
@@ -40,28 +43,40 @@
 
 
 <div class=container>
-	<div class="row">
-		<div class="col mt-5">
-		<h1>History Through Space</h1>
-		</div>
+	<div class="jumbotron mt-5">
+<!-- 		<div class="col mt-5">
+ -->    <h1>History Through Space</h1>
+		<p>We visualize the geographical aspects of Asian-American literature, such as which countries authors are immigranting from. Check the Data page for more about raw data.</p>
 	</div>
 	<div class="row">
 		<div class="col">
+            <h3 style="text-align: center;">Heat Map of Author's Ethnicity</h3>
+
  			<div id="chartdiv1" style="width:100%; height:500px;"></div> <!-- position:fixed; left:0;top:0; overflow:hidden; -->
+            <p>As this heat map reveals, many Asian-American authors are from China, South Korea, and India. Another way to visualize this information would be to normalize by populartion. </p>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row mt-5">
 		<div class="col">
-      <h3>Bar chart of number of publications per year</h3>
+      <h3 style="text-align: center;">Authors per Country (M/F)</h3>
  			<div id="barDiv" style="width:100%; height:500px;"></div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col">
-			<h1> More texts </h1>
-		</div>
-	</div>
 </div>
+    <footer class="fixed-bottom font-small page-footer d-none d-md-block" style="background:#e0e0e0">
+    <div class="container">
+      <div class="row py-2">
+        <div class="col">
+          <ul class="list-inline">
+           <li>1212 E 59th St, Chicago, IL 60637</li>
+           <li>&bull; 555-555-555</li>
+         </ul>
+       </div>
+     </div>
+     <div>
+     </div>
+   </div>
+ </footer>
 
 <script>
 function getval( callback ){
@@ -75,7 +90,6 @@ $(function () {
         getval( function ( value ) { 
             // alert( 'Do something with ' + value + ' here!' );
             var countryData = value;
-            console.log(countryData)
             var map = am4core.create("chartdiv1", am4maps.MapChart);
             map.geodata = am4geodata_worldLow;
             map.projection = new am4maps.projections.Miller();
@@ -85,8 +99,8 @@ $(function () {
             var polygonTemplate = polygonSeries.mapPolygons.template;
             polygonTemplate.tooltipText = "{name}: {value}"; 
             polygonSeries.data = countryData;
- 
-            polygonSeries.include = ["AF", "AM", "AZ", "BH", "BD", "BT", "BN", "KH", "CN", "CX", "CC", "IO", "GE", "HK", "IN", "ID", "IR", "IQ", "IL", "JP", "JO", "KZ", "KW", "KG", "LA", "LB", "MO", "MY", "MV", "MN", "MM", "NP", "KP", "OM", "PK", "PS", "PH", "QA", "SA", "SG", "KR", "LK", "SY", "TW", "TJ", "TH", "TR", "TM", "AE", "UZ", "VN", "YE"];
+            polygonSeries.include = ["AF", "BD", "BT", "BN", "KH", "CN", "CX", "CC", "IO", "HK", "IN", "ID", "JP", "KZ", "KG", "LA", "MO", "MY", "MV", "MN", "MM", "NP", "KP", "PK", "PH", "SG", "KR", "LK", "TW", "TJ", "TH", "TM", "UZ", "VN"];
+            // polygonSeries.include = ["AF", "AM", "AZ", "BH", "BD", "BT", "BN", "KH", "CN", "CX", "CC", "IO", "GE", "HK", "IN", "ID", "IR", "IQ", "IL", "JP", "JO", "KZ", "KW", "KG", "LA", "LB", "MO", "MY", "MV", "MN", "MM", "NP", "KP", "OM", "PK", "PS", "PH", "QA", "SA", "SG", "KR", "LK", "SY", "TW", "TJ", "TH", "TR", "TM", "AE", "UZ", "VN", "YE"];
             polygonSeries.heatRules.push({
               "property": "fill",
               "target": polygonSeries.mapPolygons.template,
@@ -96,7 +110,7 @@ $(function () {
             });
             var heatLegend = map.createChild(am4maps.HeatLegend);
             heatLegend.minValue = 1;
-            heatLegend.maxValue = 32;
+            heatLegend.maxValue = 50;
             heatLegend.paddingRight = 20;
             heatLegend.paddingLeft = 20;
 
@@ -116,9 +130,21 @@ $(function () {
               heatLegend.valueAxis.hideTooltip();
             });
 
+
             // alert( 'Do something with ' + value + ' here!' );
             am4core.useTheme(am4themes_animated);
-            // Themes end
+
+
+
+
+
+
+
+            // alert( 'Do something with ' + value + ' here!' );
+            am4core.useTheme(am4themes_animated);
+
+
+            // building a bar chart
 
             var chart = am4core.create("barDiv", am4charts.XYChart);
             chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
@@ -182,11 +208,11 @@ $(function () {
           }
 
 
-            series = createSeries("M", "Male");
-            series.columns.template.tooltipText = "[bold]{categoryX}[/]\n[font-size:14px]Male : {valueY}";
+            series1 = createSeries("M", "Male");
+            series1.columns.template.tooltipText = "[bold]{categoryX}[/]\n[font-size:14px]Male : {valueY}";
 
-            createSeries("F", "Female");
-            series.columns.template.tooltipText = "[bold]{categoryX}[/]\n[font-size:14px]Female : {valueY}";
+            series2 = createSeries("F", "Female");
+            series2.columns.template.tooltipText = "[bold]{categoryX}[/]\n[font-size:14px]Female : {valueY}";
 
             chart.legend = new am4charts.Legend();
 

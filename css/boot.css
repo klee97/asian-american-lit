@@ -34,22 +34,22 @@
   background-color: blanchedalmond;
 }
 
-.row {
+/*.row {
   font-size: xx-large;
-}
+}*/
 p {
   font-size: large;
 }
 
 body {
-/*	padding-bottom: 70px;
-*/   
-/* padding-top: 50px; 
-*/
+	padding-bottom: 30px;
+   
+ padding-top: 50px; 
+
 }
 
 footer{
-    height:70px; 
+    height:30px; 
     background-color: chartreuse;
 
 }
@@ -90,11 +90,13 @@ classes to make them resize responsively. */
   padding-left: 0;
   padding-right: 0;
 }
-
-.anyClass {
+.navbar {
+  height: 50px;
+}
+/*.anyClass {
   height:150px;
   overflow-y: scroll;
-}
+}*/
 .masthead {
   height: 100vh;
   min-height: 500px;
