@@ -45,6 +45,7 @@ def make_years():
     print("opened json")
 
    # sub_dict = {"M": 0, "F": 0, "born": 0, "young adult": 0, "child": 0, "adult": 0, "first-gen": 0, "not first-gen"}
+    min_year = 3000
     with open("bibliography.tsv") as tsv:
         print("opened bibliography")
         reader = csv.reader(tsv, delimiter="\t")
@@ -54,6 +55,8 @@ def make_years():
             year = int(line[YEAR].rstrip())
             m_f = line[GENDER].rstrip()
             age = line[AGE_CATEGORY].rstrip()
+            if year < min_year:
+                min_year = year
             if year not in year_dict:
                 year_dict[year] = {"publications": 0, "M": 0, "F": 0, "born": 0, "young adult": 0, "child": 0, "adult": 0, "first-gen": 0}
             year_dict[year][m_f] += 1
@@ -66,13 +69,20 @@ def make_years():
                     year_dict[year][age] += 1
     jsonfile.write("[")
     first = 1        
-    for year, val in sorted(year_dict.items()):
+    while min_year < 2012:
+    # for year, val in sorted(year_dict.items()):
+        if year in year_dict.keys():
+            val = year_dict[year]
+        else:
+            val = {"publications": 0, "M": 0, "F": 0, "born": 0, "young adult": 0, "child": 0, "adult": 0, "first-gen": 0, "year": str(year)}
+
         val["year"] = str(year)
         if first:
             jsonfile.write(json.dumps(val) + '\n')
             first = 0
         else:
             jsonfile.write(","+ json.dumps(val) + '\n')
+        min_year += 1
     jsonfile.write("]")
     jsonfile.close()
 
