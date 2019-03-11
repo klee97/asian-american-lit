@@ -68,8 +68,10 @@ def make_years():
                 if age in ["young adult", "child", "adult"]:
                     year_dict[year][age] += 1
     jsonfile.write("[")
-    first = 1        
-    while min_year < 2012:
+    first = 1 
+    year = min_year       
+    while year < 2012:
+
     # for year, val in sorted(year_dict.items()):
         if year in year_dict.keys():
             val = year_dict[year]
@@ -82,7 +84,7 @@ def make_years():
             first = 0
         else:
             jsonfile.write(","+ json.dumps(val) + '\n')
-        min_year += 1
+        year += 1
     jsonfile.write("]")
     jsonfile.close()
 
