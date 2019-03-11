@@ -118,6 +118,7 @@ $(function () {
 
         chart.colors.list = colors;
         chart.data = timeline_data;
+        console.log(timeline_data);
         chart.dateFormatter.inputDateFormat = "yyyy";
         var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
         dateAxis.renderer.minGridDistance = 60;
